@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head><title>Listagem de Canetas</title></h:head>	
+	<body>
+		<h:form id="form">
+		
+			<p:messages showDetail="false" closable="true"/>
+			<p:autoUpdate/>
+			
+			<p:dataTable id="itens" value="#{canetaBean.lista}" editable="true" var="c" border="1">
+				<p:column headerText="ID">
+				<h:outputLabel value="#{c.id}"/> 
+				</p:column>
+				<p:column headerText="Marca">
+				<h:outputLabel value="#{c.marca}"/> 
+				</p:column>
+				<p:column headerText="Modelo">
+				<h:outputLabel value="#{c.modelo}"/> 
+				</p:column>
+				<p:column headerText="Cor">
+				<h:outputLabel value="#{c.cor}"/>
+				 </p:column>
+				 
+				<p:column>
+				 <p:commandButton value="Selecionar" action="#{canetaBean.selecionar(c)}" update="form:itens"/>
+				
+        		<p:commandButton icon="pi pi-trash" actionListener="#{canetaBean.excluir(c)}" update="form:itens">
+        		
+     		   </p:commandButton>
+				</p:column>
+				
+			
+			</p:dataTable>
+			
+	</h:form>
+	
+	<h:form>
+	<p:commandButton value="Contar Canetas por Cor" action="#{canetaBean.contarCanetasPorCor}" update=":form:itens" />
+	
+	</h:form>
+	<br />
+	<p:link outcome="index" value="Voltar"/>
+	
+	</body>
+
+
+</html>

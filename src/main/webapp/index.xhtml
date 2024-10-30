@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head><title>Cadastro de Canetas</title></h:head>
+	<body>
+		<h:form id="cadastro">
+			<p:messages showDetail="false" closable="true"/>
+			<p:autoUpdate/>
+			
+			<p:panelGrid columns="2">
+			
+			
+			
+			<p:outputLabel value="Selecione uma marca:" />
+			
+			<p:selectOneMenu id="Marca" value="#{canetaBean.caneta.marca}" required="true" requiredMessage="Selecione uma marca">
+                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                    <f:selectItem itemLabel="Bic" itemValue="Bic" />
+                    <f:selectItem itemLabel="Cis" itemValue="Cis" />
+                    <f:selectItem itemLabel="Pilot" itemValue="Pilot" />
+                    <f:selectItem itemLabel="Faber-Castell" itemValue="Faber-Castell" />
+                </p:selectOneMenu>
+                
+            <p:outputLabel value="Selecione um modelo:" />    
+                
+                <p:selectOneMenu id="Modelo" value="#{canetaBean.caneta.modelo}" required="true" requiredMessage="Selecione um modelo">
+                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                    <f:selectItem itemLabel="Esferográfica" itemValue="Esferográfica" />
+                    <f:selectItem itemLabel="Nanquim" itemValue="Nanquim" />
+                    <f:selectItem itemLabel="Tinteiro" itemValue="Tinteiro" />
+                    <f:selectItem itemLabel="Marcador de Texto" itemValue="Marcador de Texto" />
+                </p:selectOneMenu>
+                
+			<p:outputLabel value="Selecione uma cor:" />
+				
+				<p:selectOneMenu id="Cor" value="#{canetaBean.caneta.cor}" required="true" requiredMessage="Selecione uma cor">
+                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                    <f:selectItem itemLabel="Azul" itemValue="Azul" />
+                    <f:selectItem itemLabel="Preta" itemValue="Preta" />
+                    <f:selectItem itemLabel="Vermelha" itemValue="Vermelha" />
+                </p:selectOneMenu>
+				
+			</p:panelGrid>
+			
+			<p:commandButton value="Salvar" action="#{canetaBean.salvar()}" update="cadastro"/>
+    		<br />
+			<br />
+			<p:link outcome="listagem" value="Listar canetas"/>
+			
+		</h:form>
+		
+		
+	<h:form>
+	<p:commandButton value="Contar Canetas por Cor" action="#{canetaBean.contarCanetasPorCor}" />
+	
+	</h:form>
+		
+		
+	</body>
+
+
+
+</html>
